@@ -1115,6 +1115,44 @@
         <div id="ejesView" class="section">
       <h2 class="section-title">Selecciona un Eje de Cobertura</h2>
       <div class="eje-grid" id="ejesGrid"></div>
+      
+      <!-- Nota aclaratoria sobre POBREZA y NUTRICHIHUAHUA -->
+      <div style="background: linear-gradient(135deg, #fff3cd 0%, #ffeaa7 100%); 
+                  border-left: 5px solid #ffc107; 
+                  padding: 20px; 
+                  margin: 30px 0; 
+                  border-radius: 12px; 
+                  box-shadow: 0 4px 15px rgba(255, 193, 7, 0.2);">
+        <div style="display: flex; align-items: center; margin-bottom: 12px;">
+          <span style="font-size: 24px; margin-right: 10px;">ℹ️</span>
+          <strong style="font-size: 16px; color: #856404;">Nota Aclaratoria</strong>
+        </div>
+        <p style="margin: 0 0 15px 0; color: #856404; line-height: 1.6; font-size: 14px;">
+          Aunque el eje <strong>POBREZA</strong> tradicionalmente incluye componentes de alimentación, 
+          estos han sido segmentados en un universo independiente denominado <strong>NUTRICHIHUAHUA</strong> 
+          para evitar duplicidad y mejorar la claridad del análisis.
+        </p>
+        <div style="background: #fff; padding: 15px; border-radius: 8px; border: 2px solid #ffc107;">
+          <div style="font-weight: 700; color: #856404; margin-bottom: 10px; font-size: 15px;">
+            📈 Total Integrado para Fines Estadísticos:
+          </div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div style="text-align: center; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+              <div style="font-size: 12px; color: #666; margin-bottom: 4px;">2024</div>
+              <div style="font-size: 20px; font-weight: 700; color: #667eea;">594,732</div>
+              <div style="font-size: 11px; color: #666; margin-top: 2px;">beneficiarios</div>
+            </div>
+            <div style="text-align: center; padding: 10px; background: #f8f9fa; border-radius: 6px;">
+              <div style="font-size: 12px; color: #666; margin-bottom: 4px;">2025</div>
+              <div style="font-size: 20px; font-weight: 700; color: #667eea;">583,626</div>
+              <div style="font-size: 11px; color: #666; margin-top: 2px;">beneficiarios</div>
+            </div>
+          </div>
+          <div style="font-size: 12px; color: #666; text-align: center; margin-top: 10px; font-style: italic;">
+            POBREZA + NUTRICHIHUAHUA
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="institucionesView" class="section" style="display:none;">
@@ -1166,12 +1204,12 @@ const beneficiariosPorEje = {
   "2024": {
     "MEDICHIHUAHUA": 450734,
     "NUTRICHIHUAHUA": 299018,
-    "POBREZA": 377346
+    "POBREZA": 295714  // Actualizado: sin apoyos de alimentación
   },
   "2025": {
     "MEDICHIHUAHUA": 610552,
-    "NUTRICHIHUAHUA": 406224,
-    "POBREZA": 310542
+    "NUTRICHIHUAHUA": 413165,  // Actualizado
+    "POBREZA": 170461  // Actualizado: sin apoyos de alimentación
   }
 };
 
@@ -1453,21 +1491,6 @@ const beneficiariosPorEje = {
               cantidad: 2746,
               beneficiarios: 1823,
               gastoTotal: 785264.59
-            },
-          ]
-        },
-        {
-          eje: "POBREZA",
-          institucion: "DIF",
-          programa: "Juntos por la sierra",
-          codigo: "1S059A1",
-          presupuesto: 115739761.64,
-          apoyos: [
-            {
-              tipo: "Toneladas de maíz y frijol",
-              cantidad: 7253,
-              beneficiarios: 81632,
-              gastoTotal: 115316638.39
             },
           ]
         },
@@ -1811,12 +1834,6 @@ const beneficiariosPorEje = {
           codigo: "2F004C1",
           presupuesto: 12006251.72,
           apoyos: [
-            {
-              tipo: "Materiales vegetativos para fomentar la producción y seguridad alimentaria; y contenedores de insectos",
-              cantidad: 78342,
-              beneficiarios: 3530,
-              gastoTotal:12006251.72
-            },
           ]
         },
         {
@@ -2739,21 +2756,6 @@ const beneficiariosPorEje = {
         {
           eje: "POBREZA",
           institucion: "DIF",
-          programa: "Juntos por la sierra",
-          codigo: "1S059A1",
-          presupuesto: 77376071.00,
-          apoyos: [
-            {
-              tipo: "Toneladas de maíz y frijol",
-              cantidad: 1781496,
-              beneficiarios: 120798,
-              gastoTotal: 69263759.17
-            },
-          ]
-        },
-        {
-          eje: "POBREZA",
-          institucion: "DIF",
           programa: "Esparcimiento para el desarrollo familiar",
           codigo: "2E093C1",
           presupuesto: 20030181.13,
@@ -2813,12 +2815,6 @@ const beneficiariosPorEje = {
           presupuesto: 108265324.65,
           apoyos: [
             {
-              tipo: "Apoyos alimenticios",
-              cantidad: 27245,
-              beneficiarios: 7367,
-              gastoTotal: 30058349.29
-            },
-            {
               tipo: "Servicios de desarrollo integral",
               cantidad: 4328,
               beneficiarios: 578,
@@ -2852,12 +2848,6 @@ const beneficiariosPorEje = {
           presupuesto: 102721102.37,
           apoyos: [
             {
-              tipo: "Despensas",
-              cantidad: 25797,
-              beneficiarios: 8576,
-              gastoTotal: 39110399.47
-            },
-            {
               tipo: "Servicios para el desarrollo integral",
               cantidad: 6026,
               beneficiarios: 2388,
@@ -2889,12 +2879,6 @@ const beneficiariosPorEje = {
               cantidad: 6450,
               beneficiarios: 1999,
               gastoTotal: 3391561.34
-            },
-            {
-              tipo: "Apoyos alimenticios",
-              cantidad: 254819,
-              beneficiarios: 18814,
-              gastoTotal: 66348645.58
             },
             {
               tipo: "Becas",
@@ -2984,12 +2968,6 @@ const beneficiariosPorEje = {
               gastoTotal: 6287449.22
             },
             {
-              tipo: "Depensas y apoyos alimenticios",
-              cantidad: 5982,
-              beneficiarios: 5223,
-              gastoTotal: 2739099.13
-            },
-            {
               tipo: "Apoyos económicos",
               cantidad: 2363,
               beneficiarios: 49,
@@ -3073,12 +3051,6 @@ const beneficiariosPorEje = {
           codigo: "2F004C1",
           presupuesto: 12395378.15,
           apoyos: [
-            {
-              tipo: "Materiales vegetativos para fomentar la producción y seguridad alimentaria; y contenedores de insectos",
-              cantidad: 0,
-              beneficiarios:0,
-              gastoTotal:12395378.15
-            },
           ]
         },
         {
@@ -3937,16 +3909,8 @@ function showEjes() {
               <span class="eje-footer-value">${formatNumber(ejeData.beneficiarios)}</span>
             </div>
             <div class="eje-footer-item">
-              <span class="eje-footer-label">💰 Presupuesto</span>
-              <span class="eje-footer-value">${formatCurrency(ejeData.presupuesto)}</span>
-            </div>
-            <div class="eje-footer-item">
               <span class="eje-footer-label">📊 Gasto</span>
               <span class="eje-footer-value">${formatCurrency(ejeData.gasto)}</span>
-            </div>
-            <div class="eje-footer-item">
-              <span class="eje-footer-label">📈 Ejecución</span>
-              <span class="eje-footer-value">${((ejeData.gasto / ejeData.presupuesto) * 100).toFixed(1)}%</span>
             </div>
           </div>
         `;

@@ -1067,6 +1067,182 @@
       opacity: 0.8;
     }
 
+    /* ============================================
+       MODAL DE GRÁFICAS INTERACTIVAS
+       ============================================ */
+    .chart-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .chart-modal.active {
+      display: flex;
+    }
+
+    .chart-modal-content {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .chart-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #667eea;
+    }
+
+    .chart-modal-title {
+      font-size: 24px;
+      font-weight: 900;
+      color: #003f7f;
+      margin: 0;
+    }
+
+    .chart-modal-close {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .chart-modal-close:hover {
+      background: #c82333;
+      transform: scale(1.05);
+    }
+
+    /* Selector de tipo de gráfica */
+    .chart-type-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .chart-type-btn {
+      background: #f0f0f0;
+      border: 2px solid #dee2e6;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.3s;
+      color: #666;
+    }
+
+    .chart-type-btn:hover {
+      background: #e3f2fd;
+      border-color: #667eea;
+    }
+
+    .chart-type-btn.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-color: #667eea;
+    }
+
+    .chart-container-wrapper {
+      position: relative;
+      height: 400px;
+      margin-bottom: 20px;
+    }
+
+    .chart-stats-summary {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .chart-stat-card {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 15px;
+      border-radius: 12px;
+      text-align: center;
+      color: white;
+    }
+
+    .chart-stat-value {
+      font-size: 24px;
+      font-weight: 900;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .chart-stat-label {
+      font-size: 11px;
+      opacity: 0.9;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    /* Hacer las tarjetas de instituciones clicables */
+    .institucion-stat {
+      cursor: pointer;
+      transition: all 0.3s;
+      padding: 8px;
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .institucion-stat:hover {
+      background: #f8f9fa;
+      transform: scale(1.05);
+    }
+
+    /* Indicador visual de gráfica disponible - SOLO EN LA TARJETA */
+    .institucion-card.has-chart {
+      position: relative;
+    }
+
+    .institucion-card.has-chart::after {
+      content: '📊';
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 16px;
+      opacity: 0.3;
+      transition: opacity 0.3s;
+    }
+
+    .institucion-card.has-chart:hover::after {
+      opacity: 0.7;
+    }
+
   </style>
 </head>
 <body>
@@ -3867,6 +4043,188 @@
           eficienciaGlobal: 0.8758,
           desempenoGlobal: 0.9116
         },
+    
+     //CECYTECH///////////////////////////////////////////////////////////////////////////    
+        {
+          codigo: "CECYTECH001",
+          nombre: "Programa de Becas CECYTECH 2024",
+          institucion: "CECYTECH",
+          unidadMedida: "Estudiantes",
+          grupoVulnerable: "Estudiantes de educación media superior y superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Educación de Calidad",
+          alineacionObjetivo: "Promover educación técnica y científica",
+          alineacionEstrategia: "Fortalecer la formación técnica y científica",
+          alineacionLinea: "Becas para estudiantes de CECYTECH",
+          
+          // Cobertura
+          PoblaciónPotencial: 15000,
+          PoblaciónObjetivo: 1657,
+          PoblaciónAlcanzada: 1657,
+          PoblaciónUnica: 1657,
+          coberturaPotencial: 30.0, // %
+          coberturaAlcanzada: 90.0, // %
+          mujeres: 2300,
+          hombres: 2200,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 25,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 25000000,
+          gasto: 22500000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0,
+          eficienciaGlobal: 0,
+          desempenoGlobal: 0
+        },
+        {
+          codigo: "CECYTECH002",
+          nombre: "Fortalecimiento Académico CECYTECH 2024",
+          institucion: "CECYTECH",
+          unidadMedida: "Docentes",
+          grupoVulnerable: "Docentes de educación media superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Educación de Calidad",
+          alineacionObjetivo: "Fortalecer capacidades docentes",
+          alineacionEstrategia: "Capacitación continua de docentes",
+          alineacionLinea: "Actualización y profesionalización docente",
+          
+          // Cobertura
+          PoblaciónPotencial: 800,
+          PoblaciónObjetivo: 372,
+          PoblaciónAlcanzada: 372,
+          PoblaciónUnica: 372,
+          coberturaPotencial: 56.25, // %
+          coberturaAlcanzada: 90.0, // %
+          mujeres: 220,
+          hombres: 230,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 15,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 0,
+          gasto: 0,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0,
+          eficienciaGlobal: 0,
+          desempenoGlobal: 0
+        },
+        {
+          codigo: "CECYTECH003",
+          nombre: "Infraestructura Educativa CECYTECH 2024",
+          institucion: "CECYTECH",
+          unidadMedida: "Planteles",
+          grupoVulnerable: "Comunidad educativa de nivel medio superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Educación de Calidad",
+          alineacionObjetivo: "Mejorar infraestructura educativa",
+          alineacionEstrategia: "Modernización de planteles",
+          alineacionLinea: "Equipamiento y mantenimiento de instalaciones",
+          
+          // Cobertura
+          PoblaciónPotencial: 20000,
+          PoblaciónObjetivo: 323,
+          PoblaciónAlcanzada: 323,
+          PoblaciónUnica: 323,
+          coberturaPotencial: 87.5, // %
+          coberturaAlcanzada: 97.2, // %
+          mujeres: 8500,
+          hombres: 9000,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 30,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 0,
+          gasto: 0,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0,
+          eficienciaGlobal: 0,
+          desempenoGlobal: 0
+        },
       ],
       "2025": [
   //ICHIJUV//////////////////////////////////////////////////////////////////////////////////  
@@ -6591,10 +6949,191 @@
           eficienciaGlobal:0.0675,
           desempenoGlobal: 0.4527
         },
+    
+    //CECYTECH///////////////////////////////////////////////////////////////////////////    
+        {
+          codigo: "CECYTECH",
+          nombre: "Comedores escolares",
+          institucion: "CECYTECH",
+          unidadMedida: "Estudiantes",
+          grupoVulnerable: "Estudiantes de educación media superior y superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Sin datos",
+          alineacionObjetivo: "Sin datos",
+          alineacionEstrategia: "Sin datos",
+          alineacionLinea: "Sin datos",
+          
+          // Cobertura
+          PoblaciónPotencial: 0,
+          PoblaciónObjetivo: 2746,
+          PoblaciónAlcanzada: 2746,
+          PoblaciónUnica: 2746,
+          mujeres: 0,
+          hombres: 0,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 25,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 25000000,
+          gasto: 22500000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0,
+          eficienciaGlobal: 0,
+          desempenoGlobal: 0
+        },
+        {
+          codigo: "CECYTECH002",
+          nombre: "Huertos escolares e invernaderos",
+          institucion: "CECYTECH",
+          unidadMedida: "Estudiantes",
+          grupoVulnerable: "Estudiates de educación media superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Sin datos",
+          alineacionObjetivo: "Sin datos",
+          alineacionEstrategia: "Sin datos",
+          alineacionLinea: "Sin datos",
+          
+          // Cobertura
+          PoblaciónPotencial: 800,
+          PoblaciónObjetivo: 320,
+          PoblaciónAlcanzada: 320,
+          PoblaciónUnica: 320,
+          coberturaPotencial: 56.25, // %
+          coberturaAlcanzada: 90.0, // %
+          mujeres: 220,
+          hombres: 230,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 15,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 8000000,
+          gasto: 7500000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0.88,
+          eficienciaGlobal: 0.94,
+          desempenoGlobal: 0.91
+        },
+        {
+          codigo: "CECYTECH003",
+          nombre: "Becas Alimentarias",
+          institucion: "CECYTECH",
+          unidadMedida: "Estudiantes",
+          grupoVulnerable: "Estudiantes de nivel medio superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Sin datos",
+          alineacionObjetivo: "Sin datos",
+          alineacionEstrategia: "Sin datos",
+          alineacionLinea: "Sin datos",
+          
+          // Cobertura
+          PoblaciónPotencial: 20000,
+          PoblaciónObjetivo: 345,
+          PoblaciónAlcanzada: 345,
+          PoblaciónUnica: 345,
+          coberturaPotencial: 87.5, // %
+          coberturaAlcanzada: 97.2, // %
+          mujeres: 8500,
+          hombres: 9000,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 30,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 45000000,
+          gasto: 42000000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0.95,
+          eficienciaGlobal: 0.93,
+          desempenoGlobal: 0.94
+        },
       ]
     };
 
-  // Mapeo de colores e iconos por institución (mismo que en Ejes)
+
+        // Mapeo de colores e iconos por institución (mismo que en Ejes)
     const institucionColors = {
       'DIF': { primary: '#e91e63', secondary: '#c2185b', icon: '👨‍👩‍👧‍👦' },
       'SPCI': { primary: '#ff9800', secondary: '#f57c00', icon: '🏕️' },
@@ -6768,9 +7307,9 @@
           
           <div id="tab-cobertura" class="config-tab-content" style="display: none;">
             ${generarCamposAnios([
-              { key: 'tasaDuplicacion', label: '🔁 TASA DUPLICACIÓN' },
+              { key: 'tasaDuplicacion', label: '🔁 TASA DUPLICIDAD' },
               { key: 'coberturaReal', label: '🎯 COBERTURA REAL (%)' },
-              { key: 'coberturaDuplicacion', label: '👥 COBERTURA CON DUPLICACIÓN (%)' },
+              { key: 'coberturaDuplicacion', label: '👥 COBERTURA CON DUPLICIDAD (%)' },
               { key: 'personasVulnerables', label: '🌍 UNIVERSO DE ATENCIÓN' }
             ])}
           </div>
@@ -7182,15 +7721,15 @@ function updateBreadcrumb() {
           stats: [
             { icon: '👤', value: formatNumber(totalUnicos), label: 'Personas Únicas' },
             { icon: '📊', value: variacionUnicos + '%', label: 'vs ' + otroAnio },
-            { icon: '🔁', value: tasaDuplicacion + 'x', label: 'Tasa Duplicación' }
+            { icon: '🔁', value: tasaDuplicacion + 'x', label: 'Tasa Duplicidad' }
           ]
         },
         {
           icon: '🎯',
-          nombre: 'COBERTURA POBLACIONAL',
+          nombre: 'COBERTURA DE POBLACIÓN VULNERABLE',
           stats: [
             { icon: '🎯', value: coberturaReal + '%', label: 'Cobertura Real' },
-            { icon: '👥', value: coberturaDuplicacion + '%', label: 'Con Duplicación' },
+            { icon: '👥', value: coberturaDuplicacion + '%', label: 'Con Duplicidad' },
             { icon: '🌍', value: formatNumber(personasVulnerables), label: 'Universo de Atención' }
           ]
         },
@@ -7241,7 +7780,7 @@ function updateBreadcrumb() {
         },
         {
           icon: '👨👩',
-          nombre: 'DISTRIBUCIÓN POR GÉNERO',
+          nombre: 'ÍNDICE DE PARIDAD',
           stats: [
             { icon: '👨', value: formatNumber(totalHombres), label: 'Hombres' },
             { icon: '👩', value: formatNumber(totalMujeres), label: 'Mujeres' },
@@ -7280,21 +7819,35 @@ function updateBreadcrumb() {
       // Crear tarjetas con el mismo formato que instituciones
       estadisticas.forEach(est => {
         const card = document.createElement('div');
-        card.className = 'institucion-card';
+        
+        // Categorías que tienen gráficas disponibles
+        const categoriasConGraficas = [
+          'PRESUPUESTO MODIFICADO', 'GASTO EJERCIDO', 
+          'BENEFICIARIOS TOTALES', 'BENEFICIARIOS ÚNICOS',
+          'COBERTURA DE POBLACIÓN VULNERABLE', 'ÍNDICE DE PARIDAD'
+        ];
+        const tieneGrafica = categoriasConGraficas.includes(est.nombre);
+        
+        card.className = tieneGrafica ? 'institucion-card has-chart' : 'institucion-card';
         card.style.cursor = 'default';
         
         card.innerHTML = `
           <div class="institucion-nombre">${est.icon} ${est.nombre}</div>
           <div class="institucion-stats">
-            ${est.stats.map(stat => `
-              <div class="institucion-stat">
-                <div class="institucion-stat-icon">${stat.icon}</div>
-                <span class="institucion-stat-value">${stat.value}</span>
-                <span class="institucion-stat-label">${stat.label}</span>
-              </div>
-            `).join('')}
+            ${est.stats.map((stat, index) => {
+              return `
+                <div class="institucion-stat" ${tieneGrafica ? `onclick="mostrarGrafica('${est.nombre}', ${index}, '${currentYear}')"` : ''}>
+                  <div class="institucion-stat-icon">${stat.icon}</div>
+                  <span class="institucion-stat-value">${stat.value}</span>
+                  <span class="institucion-stat-label">${stat.label}</span>
+                </div>
+              `;
+            }).join('')}
           </div>
         `;
+        
+        // Guardar datos para las gráficas
+        card.dataset.chartData = JSON.stringify(est);
         
         grid.appendChild(card);
       });
@@ -7305,25 +7858,25 @@ function updateBreadcrumb() {
       function crearTablaRanking(titulo, datos, columnas) {
         const container = document.createElement('div');
         container.style.gridColumn = '1 / -1';
-        container.style.marginBottom = '30px';
+        container.style.marginBottom = '15px'; // Reducido de 30px
         
         let html = `
-          <div style="background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
-            <h2 style="font-size: 28px; font-weight: 900; color: #333; margin-bottom: 25px; padding-bottom: 15px; border-bottom: 3px solid #0066cc;">${titulo}</h2>
-            <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 10px rgba(0,0,0,0.08);">
+          <div style="background: white; padding: 18px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"> 
+            <h2 style="font-size: 18px; font-weight: 800; color: #333; margin-bottom: 12px; padding-bottom: 8px; border-bottom: 2px solid #0066cc;">${titulo}</h2>
+            <table style="width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden;">
               <thead style="background: linear-gradient(135deg, #003f7f 0%, #0066cc 100%); color: white;">
                 <tr>
-                  ${columnas.map(col => `<th style="padding: 16px; font-weight: 700; text-align: ${col.align || 'left'}; font-size: 13px; text-transform: uppercase; letter-spacing: 0.5px;">${col.titulo}</th>`).join('')}
+                  ${columnas.map(col => `<th style="padding: 10px 12px; font-weight: 700; text-align: ${col.align || 'left'}; font-size: 11px; text-transform: uppercase;">${col.titulo}</th>`).join('')}
                 </tr>
               </thead>
               <tbody>
         `;
         
         datos.forEach((dato, idx) => {
-          html += '<tr style="border-bottom: 1px solid #f0f0f0; transition: all 0.2s;">';
+          html += '<tr style="border-bottom: 1px solid #f5f5f5;">';
           columnas.forEach(col => {
             let valor = col.valor(dato, idx);
-            html += `<td style="padding: 14px 16px; font-size: 14px; color: #333; text-align: ${col.align || 'left'};">${valor}</td>`;
+            html += `<td style="padding: 8px 12px; font-size: 12px; color: #333; text-align: ${col.align || 'left'};">${valor}</td>`;
           });
           html += '</tr>';
         });
@@ -7380,7 +7933,7 @@ function updateBreadcrumb() {
         { titulo: 'Institución', valor: d => `<strong>${d.nombre}</strong>` },
         { titulo: 'Beneficiarios Únicos', valor: d => formatNumber(d.beneficiariosUnicos), align: 'right' },
         { titulo: '% del Total', valor: d => `<span style="background: #e3f2fd; color: #003f7f; padding: 4px 10px; border-radius: 12px; font-weight: 700; font-size: 12px;">${(d.beneficiariosUnicos / totalUnicos * 100).toFixed(2)}%</span>`, align: 'center' },
-        { titulo: 'Tasa Duplicación', valor: d => (d.beneficiarios / d.beneficiariosUnicos).toFixed(2) + 'x', align: 'right' }
+        { titulo: 'Tasa Duplicidad', valor: d => (d.beneficiarios / d.beneficiariosUnicos).toFixed(2) + 'x', align: 'right' }
       ]));
       
       // BOTTOM 5: INSTITUCIONES CON MENOS BENEFICIARIOS ÚNICOS
@@ -7389,7 +7942,7 @@ function updateBreadcrumb() {
         { titulo: 'Institución', valor: d => `<strong>${d.nombre}</strong>` },
         { titulo: 'Beneficiarios Únicos', valor: d => formatNumber(d.beneficiariosUnicos), align: 'right' },
         { titulo: '% del Total', valor: d => `<span style="background: #fff3cd; color: #856404; padding: 4px 10px; border-radius: 12px; font-weight: 700; font-size: 12px;">${(d.beneficiariosUnicos / totalUnicos * 100).toFixed(2)}%</span>`, align: 'center' },
-        { titulo: 'Tasa Duplicación', valor: d => (d.beneficiarios / d.beneficiariosUnicos).toFixed(2) + 'x', align: 'right' }
+        { titulo: 'Tasa Duplicidad', valor: d => (d.beneficiarios / d.beneficiariosUnicos).toFixed(2) + 'x', align: 'right' }
       ]));
       
       // TOP 5: INSTITUCIONES POR COBERTURA
@@ -7496,6 +8049,242 @@ function updateBreadcrumb() {
       document.getElementById('dependenciasView').classList.remove('active');
       document.getElementById('programaDetailView').classList.remove('active');
     }
+
+    // ============================================
+    // SISTEMA DE GRÁFICAS INTERACTIVAS CON SELECTOR DE TIPO
+    // ============================================
+    
+    let chartInstance = null;
+    let currentChartData = null;
+    let currentCategoria = null;
+    
+    function mostrarGrafica(categoria, statIndex, anio) {
+      currentCategoria = categoria;
+      
+      // Calcular datos para 2024 y 2025
+      const datos2024 = dataProgramas['2024'] || [];
+      const datos2025 = dataProgramas['2025'] || [];
+      
+      // Preparar datos según categoría
+      const datosBase = {
+        'PRESUPUESTO MODIFICADO': {
+          titulo: '💰 Presupuesto Modificado',
+          labels: ['2024', '2025'],
+          valores: [
+            datos2024.reduce((sum, p) => sum + (p.presupuestoModificado || 0), 0) / 1000000,
+            datos2025.reduce((sum, p) => sum + (p.presupuestoModificado || 0), 0) / 1000000
+          ],
+          unidad: 'MDP',
+          formato: (val) => '$' + val.toFixed(0) + 'M'
+        },
+        'GASTO EJERCIDO': {
+          titulo: '💵 Gasto Ejercido',
+          labels: ['2024', '2025'],
+          valores: [
+            datos2024.reduce((sum, p) => sum + (p.gasto || 0), 0) / 1000000,
+            datos2025.reduce((sum, p) => sum + (p.gasto || 0), 0) / 1000000
+          ],
+          unidad: 'MDP',
+          formato: (val) => '$' + val.toFixed(0) + 'M'
+        },
+        'BENEFICIARIOS TOTALES': {
+          titulo: '👥 Beneficiarios Totales',
+          labels: ['2024', '2025'],
+          valores: [
+            datos2024.reduce((sum, p) => sum + (p.PoblaciónAlcanzada || 0), 0),
+            datos2025.reduce((sum, p) => sum + (p.PoblaciónAlcanzada || 0), 0)
+          ],
+          unidad: 'Personas',
+          formato: (val) => val.toLocaleString('es-MX')
+        },
+        'BENEFICIARIOS ÚNICOS': {
+          titulo: '👤 Beneficiarios Únicos',
+          labels: ['2024', '2025'],
+          valores: [
+            datos2024.reduce((sum, p) => sum + (p.PoblaciónUnica || 0), 0),
+            datos2025.reduce((sum, p) => sum + (p.PoblaciónUnica || 0), 0)
+          ],
+          unidad: 'Personas',
+          formato: (val) => val.toLocaleString('es-MX')
+        },
+        'COBERTURA DE POBLACIÓN VULNERABLE': {
+          titulo: '🎯 Cobertura de Población Vulnerable',
+          labels: ['Cobertura Real 2024', 'Cobertura Real 2025', 'Con Duplicidad 2024', 'Con Duplicidad 2025'],
+          valores: [
+            (datos2024.reduce((sum, p) => sum + (p.PoblaciónUnica || 0), 0) / 1792300 * 100),
+            (datos2025.reduce((sum, p) => sum + (p.PoblaciónUnica || 0), 0) / 1792300 * 100),
+            (datos2024.reduce((sum, p) => sum + (p.PoblaciónAlcanzada || 0), 0) / 1792300 * 100),
+            (datos2025.reduce((sum, p) => sum + (p.PoblaciónAlcanzada || 0), 0) / 1792300 * 100)
+          ],
+          unidad: '%',
+          formato: (val) => val.toFixed(2) + '%'
+        },
+        'ÍNDICE DE PARIDAD': {
+          titulo: '⚖️ Índice de Paridad de Género',
+          labels: ['% Hombres', '% Mujeres'],
+          valores: (() => {
+            const programas = dataProgramas[anio] || [];
+            const hombres = programas.reduce((sum, p) => sum + (p.hombres || 0), 0);
+            const mujeres = programas.reduce((sum, p) => sum + (p.mujeres || 0), 0);
+            const total = hombres + mujeres;
+            return [
+              (hombres / total * 100),
+              (mujeres / total * 100)
+            ];
+          })(),
+          unidad: '%',
+          formato: (val) => val.toFixed(2) + '%'
+        }
+      };
+      
+      currentChartData = datosBase[categoria];
+      
+      if (!currentChartData) {
+        return;
+      }
+      
+      // Crear modal si no existe
+      let modal = document.getElementById('chartModal');
+      if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'chartModal';
+        modal.className = 'chart-modal';
+        modal.innerHTML = `
+          <div class="chart-modal-content">
+            <div class="chart-modal-header">
+              <h2 class="chart-modal-title" id="chartModalTitle"></h2>
+              <button class="chart-modal-close" onclick="cerrarGrafica()">✕ Cerrar</button>
+            </div>
+            
+            <!-- Selector de tipo de gráfica -->
+            <div class="chart-type-selector">
+              <button class="chart-type-btn active" onclick="cambiarTipoGrafica('pie')">
+                🥧 Pastel
+              </button>
+              <button class="chart-type-btn" onclick="cambiarTipoGrafica('line')">
+                📈 Líneas
+              </button>
+              <button class="chart-type-btn" onclick="cambiarTipoGrafica('doughnut')">
+                🍩 Anillo
+              </button>
+            </div>
+            
+            <div class="chart-container-wrapper">
+              <canvas id="interactiveChart"></canvas>
+            </div>
+          </div>
+        `;
+        document.body.appendChild(modal);
+        
+        modal.addEventListener('click', (e) => {
+          if (e.target === modal) cerrarGrafica();
+        });
+      }
+      
+      document.getElementById('chartModalTitle').textContent = currentChartData.titulo;
+      
+      // Renderizar gráfica inicial (tipo pastel por defecto)
+      renderizarGrafica('pie');
+      
+      modal.classList.add('active');
+    }
+    
+    function cambiarTipoGrafica(tipo) {
+      // Actualizar botones activos
+      document.querySelectorAll('.chart-type-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+      event.target.classList.add('active');
+      
+      // Renderizar nueva gráfica
+      renderizarGrafica(tipo);
+    }
+    
+    function renderizarGrafica(tipo) {
+      if (chartInstance) {
+        chartInstance.destroy();
+      }
+      
+      const colores = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b'];
+      
+      const ctx = document.getElementById('interactiveChart').getContext('2d');
+      
+      const config = {
+        type: tipo,
+        data: {
+          labels: currentChartData.labels,
+          datasets: [{
+            label: currentChartData.unidad,
+            data: currentChartData.valores,
+            backgroundColor: tipo === 'line' ? 'rgba(102, 126, 234, 0.2)' : colores,
+            borderColor: tipo === 'line' ? '#667eea' : '#ffffff',
+            borderWidth: tipo === 'line' ? 3 : 3,
+            tension: tipo === 'line' ? 0.4 : 0,
+            fill: tipo === 'line' ? true : false,
+            pointRadius: tipo === 'line' ? 6 : 0,
+            pointHoverRadius: tipo === 'line' ? 8 : 0
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: tipo !== 'line',
+              position: 'bottom',
+              labels: {
+                font: {
+                  size: 13,
+                  weight: 'bold'
+                },
+                padding: 15
+              }
+            },
+            tooltip: {
+              backgroundColor: 'rgba(0, 0, 0, 0.8)',
+              padding: 12,
+              titleFont: { size: 14, weight: 'bold' },
+              bodyFont: { size: 13 },
+              callbacks: {
+                label: function(context) {
+                  let label = context.label || '';
+                  if (tipo === 'line') {
+                    label = currentChartData.labels[context.dataIndex];
+                  }
+                  label += ': ' + currentChartData.formato(context.parsed.y !== undefined ? context.parsed.y : context.parsed);
+                  return label;
+                }
+              }
+            }
+          },
+          scales: tipo === 'line' ? {
+            y: {
+              beginAtZero: true,
+              ticks: {
+                callback: (value) => currentChartData.formato(value)
+              }
+            }
+          } : {}
+        }
+      };
+      
+      chartInstance = new Chart(ctx, config);
+    }
+    
+    function cerrarGrafica() {
+      const modal = document.getElementById('chartModal');
+      if (modal) {
+        modal.classList.remove('active');
+      }
+      if (chartInstance) {
+        chartInstance.destroy();
+        chartInstance = null;
+      }
+      currentChartData = null;
+      currentCategoria = null;
+    }
+
+    // ============================================
 
     // ============================================
     // MOSTRAR VISTA DE DEPENDENCIAS (programas de una institución)

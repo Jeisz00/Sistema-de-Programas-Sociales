@@ -1067,6 +1067,156 @@
       opacity: 0.8;
     }
 
+    /* ============================================
+       MODAL DE GRÁFICAS INTERACTIVAS PARA PROGRAMAS
+       ============================================ */
+    .chart-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      z-index: 10000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .chart-modal.active {
+      display: flex;
+    }
+
+    .chart-modal-content {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 1100px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+      animation: slideUp 0.4s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    .chart-modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid #667eea;
+    }
+
+    .chart-modal-title {
+      font-size: 22px;
+      font-weight: 900;
+      color: #003f7f;
+      margin: 0;
+    }
+
+    .chart-modal-close {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .chart-modal-close:hover {
+      background: #c82333;
+      transform: scale(1.05);
+    }
+
+    /* Selector de gráfica */
+    .chart-selector {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 10px;
+      margin-bottom: 20px;
+      padding: 15px;
+      background: #f8f9fa;
+      border-radius: 12px;
+    }
+
+    .chart-selector-btn {
+      background: white;
+      border: 2px solid #dee2e6;
+      padding: 12px 15px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 12px;
+      transition: all 0.3s;
+      color: #666;
+      text-align: center;
+    }
+
+    .chart-selector-btn:hover {
+      background: #e3f2fd;
+      border-color: #667eea;
+      transform: translateY(-2px);
+    }
+
+    .chart-selector-btn.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-color: #667eea;
+    }
+
+    /* Selector de tipo de visualización */
+    .chart-type-selector {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 20px;
+      justify-content: center;
+    }
+
+    .chart-type-btn {
+      background: #f0f0f0;
+      border: 2px solid #dee2e6;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 13px;
+      transition: all 0.3s;
+      color: #666;
+    }
+
+    .chart-type-btn:hover {
+      background: #e3f2fd;
+      border-color: #667eea;
+    }
+
+    .chart-type-btn.active {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border-color: #667eea;
+    }
+
+    .chart-container-wrapper {
+      position: relative;
+      height: 450px;
+      margin-bottom: 20px;
+    }
+
   </style>
 </head>
 <body>
@@ -3867,6 +4017,188 @@
           eficienciaGlobal: 0.8758,
           desempenoGlobal: 0.9116
         },
+    
+    //CECYTECH///////////////////////////////////////////////////////////////////////////    
+        {
+          codigo: "CECYTECH001",
+          nombre: "Programa de Becas CECYTECH 2024",
+          institucion: "CECYTECH",
+          unidadMedida: "Estudiantes",
+          grupoVulnerable: "Estudiantes de educación media superior y superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Educación de Calidad",
+          alineacionObjetivo: "Promover educación técnica y científica",
+          alineacionEstrategia: "Fortalecer la formación técnica y científica",
+          alineacionLinea: "Becas para estudiantes de CECYTECH",
+          
+          // Cobertura
+          PoblaciónPotencial: 15000,
+          PoblaciónObjetivo: 5000,
+          PoblaciónAlcanzada: 4500,
+          PoblaciónUnica: 4200,
+          coberturaPotencial: 30.0, // %
+          coberturaAlcanzada: 90.0, // %
+          mujeres: 2300,
+          hombres: 2200,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 25,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 25000000,
+          gasto: 22500000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0.90,
+          eficienciaGlobal: 0.90,
+          desempenoGlobal: 0.90
+        },
+        {
+          codigo: "CECYTECH002",
+          nombre: "Fortalecimiento Académico CECYTECH 2024",
+          institucion: "CECYTECH",
+          unidadMedida: "Docentes",
+          grupoVulnerable: "Docentes de educación media superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Educación de Calidad",
+          alineacionObjetivo: "Fortalecer capacidades docentes",
+          alineacionEstrategia: "Capacitación continua de docentes",
+          alineacionLinea: "Actualización y profesionalización docente",
+          
+          // Cobertura
+          PoblaciónPotencial: 800,
+          PoblaciónObjetivo: 500,
+          PoblaciónAlcanzada: 450,
+          PoblaciónUnica: 430,
+          coberturaPotencial: 56.25, // %
+          coberturaAlcanzada: 90.0, // %
+          mujeres: 220,
+          hombres: 230,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 15,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 8000000,
+          gasto: 7500000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0.88,
+          eficienciaGlobal: 0.94,
+          desempenoGlobal: 0.91
+        },
+        {
+          codigo: "CECYTECH003",
+          nombre: "Infraestructura Educativa CECYTECH 2024",
+          institucion: "CECYTECH",
+          unidadMedida: "Planteles",
+          grupoVulnerable: "Comunidad educativa de nivel medio superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Educación de Calidad",
+          alineacionObjetivo: "Mejorar infraestructura educativa",
+          alineacionEstrategia: "Modernización de planteles",
+          alineacionLinea: "Equipamiento y mantenimiento de instalaciones",
+          
+          // Cobertura
+          PoblaciónPotencial: 20000,
+          PoblaciónObjetivo: 18000,
+          PoblaciónAlcanzada: 17500,
+          PoblaciónUnica: 16800,
+          coberturaPotencial: 87.5, // %
+          coberturaAlcanzada: 97.2, // %
+          mujeres: 8500,
+          hombres: 9000,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 30,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 45000000,
+          gasto: 42000000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0.95,
+          eficienciaGlobal: 0.93,
+          desempenoGlobal: 0.94
+        },
       ],
       "2025": [
   //ICHIJUV//////////////////////////////////////////////////////////////////////////////////  
@@ -6591,6 +6923,186 @@
           eficienciaGlobal:0.0675,
           desempenoGlobal: 0.4527
         },
+    
+    //CECYTECH///////////////////////////////////////////////////////////////////////////    
+        {
+          codigo: "CECYTECH",
+          nombre: "Comedores escolares",
+          institucion: "CECYTECH",
+          unidadMedida: "Estudiantes",
+          grupoVulnerable: "Estudiantes de educación media superior y superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Sin datos",
+          alineacionObjetivo: "Sin datos",
+          alineacionEstrategia: "Sin datos",
+          alineacionLinea: "Sin datos",
+          
+          // Cobertura
+          PoblaciónPotencial: 0,
+          PoblaciónObjetivo: 2746,
+          PoblaciónAlcanzada: 2746,
+          PoblaciónUnica: 2746,
+          mujeres: 0,
+          hombres: 0,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 25,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 25000000,
+          gasto: 22500000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0,
+          eficienciaGlobal: 0,
+          desempenoGlobal: 0
+        },
+        {
+          codigo: "CECYTECH002",
+          nombre: "Huertos escolares e invernaderos",
+          institucion: "CECYTECH",
+          unidadMedida: "Estudiantes",
+          grupoVulnerable: "Estudiates de educación media superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Sin datos",
+          alineacionObjetivo: "Sin datos",
+          alineacionEstrategia: "Sin datos",
+          alineacionLinea: "Sin datos",
+          
+          // Cobertura
+          PoblaciónPotencial: 800,
+          PoblaciónObjetivo: 320,
+          PoblaciónAlcanzada: 320,
+          PoblaciónUnica: 320,
+          coberturaPotencial: 56.25, // %
+          coberturaAlcanzada: 90.0, // %
+          mujeres: 220,
+          hombres: 230,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 15,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 8000000,
+          gasto: 7500000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0.88,
+          eficienciaGlobal: 0.94,
+          desempenoGlobal: 0.91
+        },
+        {
+          codigo: "CECYTECH003",
+          nombre: "Becas Alimentarias",
+          institucion: "CECYTECH",
+          unidadMedida: "Estudiantes",
+          grupoVulnerable: "Estudiantes de nivel medio superior",
+          
+          // Alineación Estratégica
+          alineacionEje: "Sin datos",
+          alineacionObjetivo: "Sin datos",
+          alineacionEstrategia: "Sin datos",
+          alineacionLinea: "Sin datos",
+          
+          // Cobertura
+          PoblaciónPotencial: 20000,
+          PoblaciónObjetivo: 345,
+          PoblaciónAlcanzada: 345,
+          PoblaciónUnica: 345,
+          coberturaPotencial: 87.5, // %
+          coberturaAlcanzada: 97.2, // %
+          mujeres: 8500,
+          hombres: 9000,
+          tasaParidad: 0,
+          gruposEtarios: {
+            "0-5": 0,
+            "6-11": 0,
+            "12-17": 0,
+            "18-29": 0,
+            "30-49": 0,
+            "50-64": 0,
+            "65+": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          tipoPoblación: {
+            "INDIGENA": 0,
+            "NO INDIGENA": 0,
+            "SIN IDENTIFICAR": 0
+          },
+          
+          // Territorial
+          municipiosAtendidos: 30,
+          municipiosNoAtendidos: 67,
+          coberturaTerritorial: 0,
+          
+          // Presupuestal
+          desempenoCuantitativo: 0,
+          presupuestoModificado: 45000000,
+          gasto: 42000000,
+          ejecucionPresupuestal: 0,
+          efectividadCostos: 0,
+          costoPlaneadoBeneficiario: 0,
+          costoRealBeneficiario: 0,
+          gastoUnicos: 0,
+          gastoDuplicados: 0,
+          
+          // Desempeño
+          eficaciaGlobal: 0.95,
+          eficienciaGlobal: 0.93,
+          desempenoGlobal: 0.94
+        },
       ]
     };
 
@@ -6899,8 +7411,33 @@ function updateBreadcrumb() {
       document.getElementById('alineacionPED').textContent = programa.alineacionEstrategia;
       document.getElementById('alineacionPMP').textContent = programa.alineacionLinea;
 
-      // Sección 6: Gráficas
-      renderCharts(programa);
+      // Sección 6: Botón de Gráficas
+      // En lugar de renderizar gráficas inline, agregar botón para modal
+      const chartsSection = document.querySelector('.charts-grid');
+      if (chartsSection) {
+        chartsSection.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
+            <button onclick="mostrarGraficasPrograma(currentProgram)" 
+                    style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); 
+                           color: white; 
+                           border: none; 
+                           padding: 20px 40px; 
+                           border-radius: 12px; 
+                           font-size: 18px; 
+                           font-weight: 700; 
+                           cursor: pointer; 
+                           box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+                           transition: all 0.3s;"
+                    onmouseover="this.style.transform='scale(1.05)'"
+                    onmouseout="this.style.transform='scale(1)'">
+              📊 Ver Gráficas Interactivas
+            </button>
+            <p style="color: #666; margin-top: 15px; font-size: 14px;">
+              Click para acceder a todas las visualizaciones del programa
+            </p>
+          </div>
+        `;
+      }
 
       // Mostrar vista detallada
       document.getElementById('institucionesGrid').style.display = 'none';
@@ -7102,6 +7639,281 @@ charts.cobertura = new Chart(document.getElementById('chartCobertura'), {
         }
       });
     }
+
+// ============================================
+// SISTEMA DE GRÁFICAS INTERACTIVAS CON SELECTOR
+// ============================================
+
+let chartInstance = null;
+let currentChartCategory = null;
+let currentChartType = 'pie';
+let currentProgramData = null;
+
+function mostrarGraficasPrograma(programa) {
+  currentProgramData = programa;
+  
+  // Crear modal si no existe
+  let modal = document.getElementById('chartModal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.id = 'chartModal';
+    modal.className = 'chart-modal';
+    modal.innerHTML = `
+      <div class="chart-modal-content">
+        <div class="chart-modal-header">
+          <h2 class="chart-modal-title">📊 Gráficas: <span id="chartProgramName"></span></h2>
+          <button class="chart-modal-close" onclick="cerrarGraficaPrograma()">✕ Cerrar</button>
+        </div>
+        
+        <!-- Selector de gráfica -->
+        <div class="chart-selector">
+          <button class="chart-selector-btn active" onclick="cambiarGraficaPrograma('cobertura')">
+            🎯 Cobertura Poblacional
+          </button>
+          <button class="chart-selector-btn" onclick="cambiarGraficaPrograma('etarios')">
+            👶👴 Grupos Etarios
+          </button>
+          <button class="chart-selector-btn" onclick="cambiarGraficaPrograma('genero')">
+            👨👩 Distribución por Género
+          </button>
+          <button class="chart-selector-btn" onclick="cambiarGraficaPrograma('poblacion')">
+            🌍 Tipo de Población
+          </button>
+          <button class="chart-selector-btn" onclick="cambiarGraficaPrograma('territorial')">
+            🗺️ Cobertura Territorial
+          </button>
+          <button class="chart-selector-btn" onclick="cambiarGraficaPrograma('presupuesto')">
+            💰 Presupuesto vs Gasto
+          </button>
+        </div>
+        
+        <!-- Selector de tipo de visualización -->
+        <div class="chart-type-selector">
+          <button class="chart-type-btn active" onclick="cambiarTipoGraficaPrograma('pie')">
+            🥧 Pastel
+          </button>
+          <button class="chart-type-btn" onclick="cambiarTipoGraficaPrograma('line')">
+            📈 Líneas
+          </button>
+          <button class="chart-type-btn" onclick="cambiarTipoGraficaPrograma('doughnut')">
+            🍩 Anillo
+          </button>
+          <button class="chart-type-btn" onclick="cambiarTipoGraficaPrograma('bar')">
+            📊 Barras
+          </button>
+        </div>
+        
+        <div class="chart-container-wrapper">
+          <canvas id="programaChart"></canvas>
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+    
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) cerrarGraficaPrograma();
+    });
+  }
+  
+  document.getElementById('chartProgramName').textContent = programa.nombre;
+  
+  // Renderizar gráfica inicial
+  currentChartCategory = 'cobertura';
+  currentChartType = 'pie';
+  renderizarGraficaPrograma();
+  
+  modal.classList.add('active');
+}
+
+function cambiarGraficaPrograma(categoria) {
+  currentChartCategory = categoria;
+  
+  // Actualizar botones activos
+  document.querySelectorAll('.chart-selector-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  event.target.classList.add('active');
+  
+  renderizarGraficaPrograma();
+}
+
+function cambiarTipoGraficaPrograma(tipo) {
+  currentChartType = tipo;
+  
+  // Actualizar botones activos
+  document.querySelectorAll('.chart-type-btn').forEach(btn => {
+    btn.classList.remove('active');
+  });
+  event.target.classList.add('active');
+  
+  renderizarGraficaPrograma();
+}
+
+function renderizarGraficaPrograma() {
+  if (chartInstance) {
+    chartInstance.destroy();
+  }
+  
+  const prog = currentProgramData;
+  const colores = ['#667eea', '#764ba2', '#f093fb', '#4facfe', '#00f2fe', '#43e97b', '#fa709a'];
+  
+  let chartData = {};
+  
+  switch(currentChartCategory) {
+    case 'cobertura':
+      chartData = {
+        titulo: '🎯 Cobertura Poblacional',
+        labels: ['Potencial', 'Objetivo', 'Alcanzada', 'Única'],
+        valores: [prog.PoblaciónPotencial, prog.PoblaciónObjetivo, prog.PoblaciónAlcanzada, prog.PoblaciónUnica],
+        unidad: 'Personas'
+      };
+      break;
+      
+    case 'etarios':
+      chartData = {
+        titulo: '👶👴 Distribución por Grupos Etarios',
+        labels: ['0-5', '6-11', '12-17', '18-29', '30-49', '50-64', '65+'],
+        valores: [
+          prog.gruposEtarios['0-5'],
+          prog.gruposEtarios['6-11'],
+          prog.gruposEtarios['12-17'],
+          prog.gruposEtarios['18-29'],
+          prog.gruposEtarios['30-49'],
+          prog.gruposEtarios['50-64'],
+          prog.gruposEtarios['65+']
+        ],
+        unidad: 'Personas'
+      };
+      break;
+      
+    case 'genero':
+      chartData = {
+        titulo: '👨👩 Distribución por Género',
+        labels: ['Hombres', 'Mujeres'],
+        valores: [prog.hombres, prog.mujeres],
+        unidad: 'Personas'
+      };
+      break;
+      
+    case 'poblacion':
+      chartData = {
+        titulo: '🌍 Tipo de Población',
+        labels: ['Indígena', 'No Indígena', 'Sin Identificar'],
+        valores: [
+          prog.tipoPoblación.INDIGENA,
+          prog.tipoPoblación['NO INDIGENA'],
+          prog.tipoPoblación['SIN IDENTIFICAR']
+        ],
+        unidad: 'Personas'
+      };
+      break;
+      
+    case 'territorial':
+      chartData = {
+        titulo: '🗺️ Cobertura Territorial',
+        labels: ['Municipios Atendidos', 'Municipios No Atendidos'],
+        valores: [prog.municipiosAtendidos, prog.municipiosNoAtendidos],
+        unidad: 'Municipios'
+      };
+      break;
+      
+    case 'presupuesto':
+      chartData = {
+        titulo: '💰 Presupuesto vs Gasto',
+        labels: ['Presupuesto Modificado', 'Gasto Ejercido'],
+        valores: [prog.presupuestoModificado / 1000000, prog.gasto / 1000000],
+        unidad: 'MDP'
+      };
+      break;
+  }
+  
+  const ctx = document.getElementById('programaChart').getContext('2d');
+  
+  const config = {
+    type: currentChartType,
+    data: {
+      labels: chartData.labels,
+      datasets: [{
+        label: chartData.unidad,
+        data: chartData.valores,
+        backgroundColor: currentChartType === 'line' ? 'rgba(102, 126, 234, 0.2)' : colores,
+        borderColor: currentChartType === 'line' ? '#667eea' : '#ffffff',
+        borderWidth: currentChartType === 'line' ? 3 : 2,
+        tension: currentChartType === 'line' ? 0.4 : 0,
+        fill: currentChartType === 'line' ? true : false,
+        pointRadius: currentChartType === 'line' ? 6 : 0,
+        pointHoverRadius: currentChartType === 'line' ? 8 : 0
+      }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
+          display: currentChartType !== 'line',
+          position: 'bottom',
+          labels: {
+            font: { size: 12, weight: 'bold' },
+            padding: 12
+          }
+        },
+        tooltip: {
+          backgroundColor: 'rgba(0, 0, 0, 0.8)',
+          padding: 12,
+          titleFont: { size: 13, weight: 'bold' },
+          bodyFont: { size: 12 },
+          callbacks: {
+            label: function(context) {
+              let label = context.label || '';
+              let value = context.parsed.y !== undefined ? context.parsed.y : context.parsed;
+              
+              if (chartData.unidad === 'MDP') {
+                return label + ': $' + value.toFixed(1) + 'M';
+              } else {
+                return label + ': ' + value.toLocaleString('es-MX');
+              }
+            }
+          }
+        },
+        title: {
+          display: true,
+          text: chartData.titulo,
+          font: { size: 16, weight: 'bold' },
+          padding: { bottom: 20 }
+        }
+      },
+      scales: (currentChartType === 'line' || currentChartType === 'bar') ? {
+        y: {
+          beginAtZero: true,
+          ticks: {
+            callback: (value) => {
+              if (chartData.unidad === 'MDP') {
+                return '$' + value.toFixed(0) + 'M';
+              }
+              return value.toLocaleString('es-MX');
+            }
+          }
+        }
+      } : {}
+    }
+  };
+  
+  chartInstance = new Chart(ctx, config);
+}
+
+function cerrarGraficaPrograma() {
+  const modal = document.getElementById('chartModal');
+  if (modal) {
+    modal.classList.remove('active');
+  }
+  if (chartInstance) {
+    chartInstance.destroy();
+    chartInstance = null;
+  }
+  currentChartCategory = null;
+  currentChartType = 'pie';
+  currentProgramData = null;
+}
 
 // ============================================
 // EVENT LISTENERS

@@ -1075,7 +1075,11 @@
         <div class="stat-box">
           <div class="stat-box-title">
             <span>🏆</span>
-            <span>Top 5 Municipios con Mayor Cobertura</span>
+            <span>Top 5 Municipios con</span>
+            <select id="filterCobertura" onchange="actualizarRankings()" style="margin-left: 5px; padding: 5px 10px; border-radius: 6px; border: 2px solid #667eea; background: white; font-weight: 700; cursor: pointer; font-size: 13px;">
+              <option value="mayor">Mayor Cobertura</option>
+              <option value="menor">Menor Cobertura</option>
+            </select>
           </div>
           <ul class="ranking-list" id="topCobertura"></ul>
         </div>
@@ -1084,7 +1088,11 @@
         <div class="stat-box">
           <div class="stat-box-title">
             <span>👥</span>
-            <span>Top 5 Municipios con Más Beneficiarios</span>
+            <span>Top 5 Municipios con</span>
+            <select id="filterBeneficiarios" onchange="actualizarRankings()" style="margin-left: 5px; padding: 5px 10px; border-radius: 6px; border: 2px solid #667eea; background: white; font-weight: 700; cursor: pointer; font-size: 13px;">
+              <option value="mas">Más Beneficiarios</option>
+              <option value="menos">Menos Beneficiarios</option>
+            </select>
           </div>
           <ul class="ranking-list" id="topBeneficiarios"></ul>
         </div>
@@ -1093,7 +1101,11 @@
         <div class="stat-box">
           <div class="stat-box-title">
             <span>📋</span>
-            <span>Top 5 Programas con Mas Acciones</span>
+            <span>Top 5 Programas con</span>
+            <select id="filterProgramas" onchange="actualizarRankings()" style="margin-left: 5px; padding: 5px 10px; border-radius: 6px; border: 2px solid #667eea; background: white; font-weight: 700; cursor: pointer; font-size: 13px;">
+              <option value="mas">Más Acciones</option>
+              <option value="menos">Menos Acciones</option>
+            </select>
           </div>
           <ul class="ranking-list" id="topProgramas"></ul>
         </div>
@@ -1102,7 +1114,11 @@
         <div class="stat-box">
           <div class="stat-box-title">
             <span>🏛️</span>
-            <span>Top 5 Instituciones con Más Acciones por Programa</span>
+            <span>Top 5 Instituciones con</span>
+            <select id="filterInstituciones" onchange="actualizarRankings()" style="margin-left: 5px; padding: 5px 10px; border-radius: 6px; border: 2px solid #667eea; background: white; font-weight: 700; cursor: pointer; font-size: 13px;">
+              <option value="mas">Más Acciones por Programa</option>
+              <option value="menos">Menos Acciones por Programa</option>
+            </select>
           </div>
           <ul class="ranking-list" id="topInstituciones"></ul>
         </div>
@@ -1228,10 +1244,10 @@
       "CUAUHTEMOC": 180638,
       "CUSIHUIRIACHI": 5099,
       "DELICIAS": 150506,
-      "DR.BELISARIO DOMÍNGUEZ": 2456,
+      "DR. BELISARIO DOMINGUEZ": 2456,
       "EL TULE": 1448,
       "GALEANA": 6656,
-      "GÓMEZ FARIAS": 7023,
+      "GOMEZ FARIAS": 7023,
       "GRAN MORELOS": 2448,
       "GUACHOCHI": 50180,
       "GUADALUPE": 4237,
@@ -21457,7 +21473,7 @@
     // FUNCIONES PARA ESTADÍSTICAS ADICIONALES
     // ============================================
 
-    function getTopMunicipiosByCobertura(year, limit = 5) {
+    function getTopMunicipiosByCobertura(year, limit = 5, orden = 'desc') {
       const municipios = PROGRAMAS[year] || {};
       const datos = [];
 
@@ -21470,10 +21486,25 @@
         datos.push({ municipio: mun, cobertura: cobertura });
       });
 
-      return datos.sort((a, b) => b.cobertura - a.cobertura).slice(0, limit);
+      // Filtrar solo municipios con cobertura <= 100%
+      const datosValidos = datos.filter(d => d.cobertura <= 100);
+      
+      // Ordenar según el parámetro: 'desc' = mayor a menor, 'asc' = menor a mayor
+      const ordenados = orden === 'asc' 
+        ? datosValidos.sort((a, b) => a.cobertura - b.cobertura)
+        : datosValidos.sort((a, b) => b.cobertura - a.cobertura);
+      
+      // Si hay suficientes municipios válidos, usarlos
+      if (datosValidos.length >= limit) {
+        return ordenados.slice(0, limit);
+      }
+      
+      // Si no hay suficientes, advertir en consola y devolver lo que haya
+      console.warn(`⚠️ Solo ${datosValidos.length} municipios tienen cobertura <= 100%. Se muestran todos los disponibles.`);
+      return ordenados;
     }
 
-    function getTopMunicipiosByBeneficiarios(year, limit = 5) {
+    function getTopMunicipiosByBeneficiarios(year, limit = 5, orden = 'desc') {
       const municipios = PROGRAMAS[year] || {};
       const datos = [];
 
@@ -21484,10 +21515,15 @@
         datos.push({ municipio: mun, beneficiarios: totalBenef });
       });
 
-      return datos.sort((a, b) => b.beneficiarios - a.beneficiarios).slice(0, limit);
+      // Ordenar según el parámetro: 'desc' = más a menos, 'asc' = menos a más
+      const ordenados = orden === 'asc'
+        ? datos.sort((a, b) => a.beneficiarios - b.beneficiarios)
+        : datos.sort((a, b) => b.beneficiarios - a.beneficiarios);
+      
+      return ordenados.slice(0, limit);
     }
 
-    function getTopProgramas(year, limit = 5) {
+    function getTopProgramas(year, limit = 5, orden = 'desc') {
       const municipios = PROGRAMAS[year] || {};
       const programaCounts = {};
 
@@ -21504,12 +21540,15 @@
         });
       });
 
-      return Object.values(programaCounts)
-        .sort((a, b) => b.count - a.count)
-        .slice(0, limit);
+      // Ordenar según el parámetro: 'desc' = más acciones, 'asc' = menos acciones
+      const ordenados = orden === 'asc'
+        ? Object.values(programaCounts).sort((a, b) => a.count - b.count)
+        : Object.values(programaCounts).sort((a, b) => b.count - a.count);
+      
+      return ordenados.slice(0, limit);
     }
 
-    function getTopInstituciones(year, limit = 5) {
+    function getTopInstituciones(year, limit = 5, orden = 'desc') {
       const municipios = PROGRAMAS[year] || {};
       const institucionCounts = {};
 
@@ -21526,9 +21565,12 @@
         });
       });
 
-      return Object.values(institucionCounts)
-        .sort((a, b) => b.count - a.count)
-        .slice(0, limit);
+      // Ordenar según el parámetro: 'desc' = más acciones, 'asc' = menos acciones
+      const ordenados = orden === 'asc'
+        ? Object.values(institucionCounts).sort((a, b) => a.count - b.count)
+        : Object.values(institucionCounts).sort((a, b) => b.count - a.count);
+      
+      return ordenados.slice(0, limit);
     }
 
         // ========================================================================
@@ -21666,9 +21708,22 @@
       if (elemCob) elemCob.textContent = promedios.cobertura + '%';
     }
 
+    // ============================================
+    // FUNCIÓN PARA ACTUALIZAR RANKINGS CUANDO CAMBIAN LOS FILTROS
+    // ============================================
+    function actualizarRankings() {
+      updateAdditionalStats();
+    }
+
     function updateAdditionalStats() {
+      // Leer valores de los filtros
+      const ordenCobertura = document.getElementById('filterCobertura')?.value === 'menor' ? 'asc' : 'desc';
+      const ordenBeneficiarios = document.getElementById('filterBeneficiarios')?.value === 'menos' ? 'asc' : 'desc';
+      const ordenProgramas = document.getElementById('filterProgramas')?.value === 'menos' ? 'asc' : 'desc';
+      const ordenInstituciones = document.getElementById('filterInstituciones')?.value === 'menos' ? 'asc' : 'desc';
+      
       // Top Municipios por Cobertura
-      const topCobertura = getTopMunicipiosByCobertura(currentYear);
+      const topCobertura = getTopMunicipiosByCobertura(currentYear, 5, ordenCobertura);
       const coberturaList = document.getElementById('topCobertura');
       if (coberturaList) {
         coberturaList.innerHTML = '';
@@ -21684,7 +21739,7 @@
       }
 
       // Top Municipios por Beneficiarios
-      const topBenef = getTopMunicipiosByBeneficiarios(currentYear);
+      const topBenef = getTopMunicipiosByBeneficiarios(currentYear, 5, ordenBeneficiarios);
       const benefList = document.getElementById('topBeneficiarios');
       if (benefList) {
         benefList.innerHTML = '';
@@ -21700,7 +21755,7 @@
       }
 
       // Top Programas
-      const topProgs = getTopProgramas(currentYear);
+      const topProgs = getTopProgramas(currentYear, 5, ordenProgramas);
       const progList = document.getElementById('topProgramas');
       if (progList) {
         progList.innerHTML = '';
@@ -21716,7 +21771,7 @@
       }
 
       // Top Instituciones
-      const topInst = getTopInstituciones(currentYear);
+      const topInst = getTopInstituciones(currentYear, 5, ordenInstituciones);
       const instList = document.getElementById('topInstituciones');
       if (instList) {
         instList.innerHTML = '';
